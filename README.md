@@ -83,7 +83,7 @@ In this visualization, such changes as scaling and rotation are ignored. We took
 
 
 
-## Licence
+## License
 EvenVizion is licensed under the MIT license, as found in the LICENSE file.
 
 
