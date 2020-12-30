@@ -97,12 +97,12 @@ class FrameProcessing:
             all_static_pts_a_with_repetitions.extend(static_pts_a)
             all_static_pts_b_with_repetitions.extend(static_pts_b)
         if all_static_pts_a_with_repetitions is None or all_static_pts_b_with_repetitions is None:
-            raise NoMatchesException("can't find keypoints that lie on static objects ",
+            raise NoMatchesException("no keypoints matching filter",
                                      "couldn't process")
         all_matching_pts_a, all_matching_pts_b = \
             remove_double_matching(all_static_pts_a_with_repetitions,
                                    all_static_pts_b_with_repetitions)
-        if all_static_pts_a_with_repetitions is None or all_static_pts_b_with_repetitions is None:
-            raise NoMatchesException("can't find keypoints that lie on static objects ",
+        if all_matching_pts_a is None or all_matching_pts_b is None:
+            raise NoMatchesException("no keypoints matching filter",
                                      "couldn't process")
         return all_matching_pts_a, all_matching_pts_b
