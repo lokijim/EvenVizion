@@ -32,7 +32,7 @@ All the necessary libraries and versions you can find in requirements.txt.
 [Here](https://github.com/AIHunters/EvenVizion/tree/master/evenvizion/examples)  you can find examples of package usage.
 
 ### evenvizion_component.py
-` $python3 evenvizion_component.py --path_to_video="test_video/test_video.mp4" --experiment_name="test_video_processing" --path_to_original_coordinates="test_video/original_coordinates.json" `
+` $python3 evenvizion/examples/evenvizion_component.py --path_to_video="test_video/test_video.mp4" --experiment_name="test_video_processing" --path_to_original_coordinates="test_video/original_coordinates.json" `
 
 All the parameters can be changed.
 
@@ -62,7 +62,7 @@ As a result, you get JSON with the matrix of a homography between two frames (no
 
 
 ### compare_evenvizion_with_original_video.py
-`$python3 compare_evenvizion_with_original_video.py --path_to_homography_dict="experiment/test_video_processing/dict_with_homography_matrix.json" --path_to_video="test_video/test_video.mp4" --experiment_name="visualize_camera_stabilization"`
+`$python3 evenvizion/examples/compare_evenvizion_with_original_video.py --path_to_homography_dict="experiment/test_video_processing/dict_with_homography_matrix.json" --path_to_video="test_video/test_video.mp4" --experiment_name="visualize_camera_stabilization"`
 
 #### About the parameters:
 
