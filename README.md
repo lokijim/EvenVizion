@@ -32,7 +32,7 @@ All the necessary libraries and versions you can find in requirements.txt.
 [Here](https://github.com/AIHunters/EvenVizion/tree/master/evenvizion/examples)  you can find examples of package usage.
 
 ### evenvizion_component.py
-` $python3 evenvizion_component.py --path_to_video="test_video/test_video.mp4" --experiment_folder="experiment"  --experiment_name="test_video_processing" --path_to_original_coordinate="test_video/original_coordinates.json" `
+` $python3 evenvizion_component.py --path_to_video="test_video/test_video.mp4" --experiment_name="test_video_processing" --path_to_original_coordinates="test_video/original_coordinates.json" `
 
 All the parameters can be changed.
 
@@ -41,7 +41,7 @@ All the parameters can be changed.
 - path_to_video - path to video that needs to be analyzed
 - experiment_name - the name of an experiment 
 - resize_width - to speed up the performance of the script, pictures will be resized to this width
-- path_to_original_coordinate - if you want to get fixed object coordinates, specify the path to json with the original coordinate
+- path_to_original_coordinates - if you want to get fixed object coordinates, specify the path to json with the original coordinate. Pay attention, that frame numbers should start from 1.
 - none_H_processing - there are some cases where Homography matrix can't be calculated, so you need to choose which script do you need to run in this case. If set True H = H on previous step, False - H = [1,0,0][0,1,0][0,0,1], it means there is no transformation on this frame
 - heatmap_visualization - for getting heatmap visualization, set True
 - show_matching_visualization - for getting matching visualization, set True
@@ -62,7 +62,7 @@ As a result, you get JSON with the matrix of a homography between two frames (no
 
 
 ### compare_evenvizion_with_original_video.py
-`$python3 compare_evenvizion_with_original_video.py --path_to_homography_dict="experiment/test_video_processing/dict_with_homography_matrix.json" --path_to_original_video="test_video/test_video.mp4" --experiment_name="visualize_camera_stabilization" --experiment_folder="experiment/test_video_processing"`
+`$python3 compare_evenvizion_with_original_video.py --path_to_homography_dict="experiment/test_video_processing/dict_with_homography_matrix.json" --path_to_video="test_video/test_video.mp4" --experiment_name="visualize_camera_stabilization"`
 
 #### About the parameters:
 
