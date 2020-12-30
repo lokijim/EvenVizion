@@ -9,8 +9,9 @@ This is licensed under an MIT license. See the README.md file
 for more information.
 
 This is an example of getting homography matrix for each frame, getting heatmap visualization.
-If you specify --path_to_original_coordinate,
-original coordinates will be recalculated to a fixed coordinate system.
+If you specify --path_to_original_coordinates,
+original coordinates will be recalculated to a fixed coordinate system. Pay attention, that frame numbers
+should start from 1.
 """
 
 import argparse
@@ -33,7 +34,6 @@ from evenvizion.processing.utils import read_homography_dict, superposition_dict
 from evenvizion.processing.video_processing import get_homography_dict
 from evenvizion.visualization.processing_visualization import \
     heatmap_video_processing, comparison_original_with_fixed_coordinate_video_processing
-
 
 
 def visualize_heatmap(save_folder, path_to_video, path_to_homography_dict):
@@ -85,7 +85,10 @@ def get_fixed_coordinate(path_to_video, path_to_homography_dict, original_shape)
     """
     dict_with_homography_matrix, resize_info = read_homography_dict(path_to_homography_dict)
     reformat_homography_dict = superposition_dict(dict_with_homography_matrix)
-    original_coordinates = read_json_with_coordinates(args.path_to_original_coordinate)
+    original_coordinates = read_json_with_coordinates(args.path_to_original_coordinates)
+    if max(original_coordinates.keys()) not in reformat_homography_dict.keys():
+        reformat_homography_dict[max(original_coordinates.keys())] = reformat_homography_dict[
+            max(original_coordinates.keys()) - 1]
     recalculated_coordinates = from_original_to_fix(original_coordinates,
                                                     reformat_homography_dict, original_shape,
                                                     [resize_info["h"], resize_info["w"]])
@@ -102,8 +105,8 @@ if __name__ == '__main__':
     parser.add_argument('--path_to_video', type=str, default="test_video/test_video.mp4")
     parser.add_argument('--experiment_name', type=str, default="test_video_processing")
     parser.add_argument('--resize_width', type=int, help="wights to resize image", default=400)
-    parser.add_argument('--path_to_original_coordinate',
-                        help="path to json with original coordinate",
+    parser.add_argument('--path_to_original_coordinates',
+                        help="path to json with original coordinates",
                         default="test_video/original_coordinates.json")
     parser.add_argument('--none_H_processing', help="If True we use H_prev as H, False- do nothing",
                         default=True)
@@ -142,5 +145,5 @@ if __name__ == '__main__':
 
     if args.heatmap_visualization:
         visualize_heatmap(args.save_folder, args.path_to_video, path_to_homography_dict)
-    if args.path_to_original_coordinate:
+    if args.path_to_original_coordinates:
         get_fixed_coordinate(args.path_to_video, path_to_homography_dict, original_shape)
