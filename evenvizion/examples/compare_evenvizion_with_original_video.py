@@ -31,7 +31,7 @@ if __name__ == '__main__':
                         default="test_video_processing/test_video/dict_with_homography_matrix.json")
     parser.add_argument('--path_to_video',
                         default="test_video/test_video.mp4")
-    parser.add_argument('--experiment_name', help="folder to save experiment result", default="test_video_processing")
+    parser.add_argument('--experiment_name', default="test_video_processing")
     args = parser.parse_args()
     args.experiment_folder = os.getcwd()
     args.save_folder = args.experiment_folder + "/" + args.experiment_name

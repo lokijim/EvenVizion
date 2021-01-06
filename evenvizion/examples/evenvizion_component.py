@@ -136,7 +136,7 @@ if __name__ == '__main__':
     original_img_w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     original_img_h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     original_shape = [original_img_h, original_img_w]
-    result = get_homography_dict(cap, matching_path=path_to_save_matching,
+    result = get_homography_dict(cap, resize_width=args.resize_width, matching_path=path_to_save_matching,
                                  none_H_processing=args.none_H_processing)
 
     with open("{}/dict_with_homography_matrix.json".format(args.save_folder), "w") as json_:

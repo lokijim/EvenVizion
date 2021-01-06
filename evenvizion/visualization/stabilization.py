@@ -258,7 +258,7 @@ def create_video_comparison(path_to_video, save_folder, homography_dict, width):
         The path to the analyzed video.
 
     save_folder: str
-        The path to save pictures with heatmap visualization.
+        The path to save pictures with comparison between original and stabilise video.
 
     homography_dict: dict
         Dict with matrix superposition for each frame.
