@@ -21,7 +21,7 @@ setuptools.setup(
     install_requires=[
 	'imutils>=0.5.3',
 	'numpy>=1.19.2',
-'opencv-contrib-python==3.4.2.17'],
+'opencv-contrib-python==4.5.2.52'],
     python_requires='>=3.6',
 )
 
